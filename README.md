@@ -1,4 +1,7 @@
 # 🚀 IaCbyMo: Terraform-Powered Azure Landing Zone
+NOTE: To deploy your own infrastructure as code you will only need the " Terraform.tfvars" file whereyou declare what each of the variables are called
+in each of your modules. This approach makes these template reusable and modular. terraform apply -var-file="terraform.tfvars" -- Use this command --
+this will laod up and override any hard coded variables and load all the variables from the Terraform.tfvars files.
 
 Modular, secure, and production-ready cloud architecture for Azure — built with best-practice Terraform modules and recruiter-ready documentation.
 
@@ -25,4 +28,4 @@ Visual breakdown of module interaction — see [`diagrams/`](diagrams/) for full
 ```bash
 cd examples/sample-vmss
 terraform init
-terraform apply
+terraform apply -var-file="terraform.tfvars"
