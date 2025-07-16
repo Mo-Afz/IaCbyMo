@@ -1,30 +1,28 @@
+# 🚀 IaCbyMo: Terraform-Powered Azure Landing Zone
 
-# Terraform Azure Landing Zone by IaCbyMo
+Modular, secure, and production-ready cloud architecture for Azure — built with best-practice Terraform modules and recruiter-ready documentation.
 
-This project sets up a scalable and secure landing zone on Azure using Terraform modules, including:
+## 📦 Modules Included
+- ✅ `networking`: vNet, subnets, NSGs
+- ✅ `compute`: VMSS clusters with autoscaling
+- ✅ `governance`: policy enforcement, tagging, locks
 
-- Virtual Network with Subnets
-- Network Security Groups (NSGs)
-- Azure Policy definitions and assignments
-- Virtual Machine Scale Set (VMSS) cluster
+## 🧪 Example Scenarios
+Explore real-world configs:
+- `examples/sample-vmss.tf`: Scalable compute with VMSS
+- `examples/simple-networking/`: Basic networking module use
+- More coming soon...
 
-## Features
+## 📐 Architecture Diagram
+Visual breakdown of module interaction — see [`diagrams/`](diagrams/) for full topology.
 
-- Modular structure
-- Environment-based configurations (via `.tfvars`)
-- Repeatable infrastructure provisioning
-- IAM and governance baked in
+## 🔧 Requirements
+- Terraform >= 1.6
+- Azure Provider >= 3.x
+- Azure CLI configured
 
-## How to Use
-
-1. Update `terraform.tfvars` for your environment (dev, staging, prod)
-2. Run:
-
+## 🚀 Quickstart
 ```bash
+cd examples/sample-vmss
 terraform init
-terraform plan -var-file=terraform.tfvars
-terraform apply -var-file=terraform.tfvars
-=======
-# IaCbyMo
-Modular Azure Landing Zone with Governance &amp; Scale using Terraform
-
+terraform apply
