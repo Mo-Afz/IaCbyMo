@@ -17,3 +17,9 @@ variable "subnet_name" {
 variable "nsg_name" {
   type = string
 }
+
+variable "allowed_ssh_cidr" {
+  description = "CIDR block allowed to SSH. Avoid using '*' (open to internet) in production."
+  type        = string
+  default     = "*"
+}
