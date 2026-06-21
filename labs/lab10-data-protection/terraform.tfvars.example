@@ -1,0 +1,6 @@
+# Required
+lab_owner      = "yourname@example.com"
+ssh_public_key = "ssh-rsa AAAA..."
+
+# Optional
+# vm_size = "Standard_B1s"

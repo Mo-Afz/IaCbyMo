@@ -1,0 +1,5 @@
+# Required
+lab_owner = "yourname@example.com"
+
+# Optional
+# environment = "dev"

@@ -1,0 +1,3 @@
+# Required
+lab_owner  = "yourname@example.com"
+app_suffix = "yourname123"  # Must be globally unique

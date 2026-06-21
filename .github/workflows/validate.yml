@@ -1,0 +1,54 @@
+name: Validate Terraform Labs
+
+on:
+  push:
+    branches: [main]
+    paths: ["labs/**"]
+  pull_request:
+    branches: [main]
+    paths: ["labs/**"]
+
+jobs:
+  validate:
+    name: Validate Labs
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        lab:
+          - lab01-identity
+          - lab02a-rbac
+          - lab02b-policy
+          - lab03-resource-management
+          - lab04-virtual-networking
+          - lab05-intersite-connectivity
+          - lab06-traffic-management
+          - lab07-storage
+          - lab08-virtual-machines
+          - lab09a-web-apps
+          - lab09b-container-instances
+          - lab09c-container-apps
+          - lab10-data-protection
+          - lab11-monitoring
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.6.0"
+
+      - name: Format Check
+        run: terraform fmt -check -diff
+        working-directory: labs/${{ matrix.lab }}
+
+      - name: Init
+        run: terraform init -backend=false
+        working-directory: labs/${{ matrix.lab }}
+
+      - name: Validate
+        run: terraform validate
+        working-directory: labs/${{ matrix.lab }}

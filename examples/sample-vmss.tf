@@ -1,45 +1,48 @@
-module "networking" {
-  source              = "../modules/networking"
-  vnet_name           = "vnet-hub"
-  address_space       = ["10.0.0.0/16"]
-  subnet_prefixes     = ["10.0.1.0/24"]
-  subnet_names        = ["subnet-app"]
-  location            = var.location
-  resource_group_name = var.resource_group_name
-  nsg_name            = "nsg-app"
-  tags = {
-    environment = "production"
-    owner       = "Mo-Afz"
-  }
+variable "location" {
+  default = "eastus"
 }
 
-module "governance" {
-  source              = "../modules/governance"
-  resource_group_name = var.resource_group_name
+variable "resource_group_name" {
+  default = "rg-sample"
+}
+
+variable "admin_username" {
+  default = "azureuser"
+}
+
+variable "ssh_public_key" {
+  description = "SSH public key for VMSS authentication"
+  type        = string
+}
+
+module "networking" {
+  source              = "../modules/networking"
+  vnet_name           = "vnet-sample"
+  subnet_name         = "subnet-app"
+  nsg_name            = "nsg-app"
   location            = var.location
-  policy_definitions = [
-    "tagging-policy.json",
-    "location-policy.json",
-    "naming-policy.json"
-  ]
-  tags = {
-    compliance = "true"
-    enforced   = "yes"
-  }
+  resource_group_name = var.resource_group_name
 }
 
 module "compute" {
   source              = "../modules/compute"
   vmss_name           = "vmss-app"
-  subnet_id           = module.networking.subnet_ids[0]
+  subnet_id           = module.networking.subnet_id
   location            = var.location
   resource_group_name = var.resource_group_name
   instance_count      = 3
-  vm_size             = "Standard_DS2_v2"
   admin_username      = var.admin_username
-  admin_password      = var.admin_password
-  tags = {
-    role        = "app-server"
-    environment = "production"
-  }
+  ssh_public_key      = var.ssh_public_key
+  sku                 = "Standard_DS2_v2"
+  enable_premium      = false
+
+  depends_on = [module.networking]
+}
+
+module "governance" {
+  source              = "../modules/governance"
+  location            = var.location
+  resource_group_name = var.resource_group_name
+
+  depends_on = [module.compute]
 }

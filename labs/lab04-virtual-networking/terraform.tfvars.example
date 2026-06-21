@@ -1,0 +1,7 @@
+# Required
+lab_owner        = "yourname@example.com"
+allowed_ssh_cidr = "YOUR.PUBLIC.IP/32"  # Replace with your actual IP
+
+# Optional
+# location    = "eastus"
+# environment = "dev"

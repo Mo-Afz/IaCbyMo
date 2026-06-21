@@ -1,0 +1,8 @@
+# Required
+lab_owner = "yourname@example.com"
+
+# Optional — set to "Deny" for hard enforcement (blocks non-compliant resources)
+# tag_policy_effect = "Audit"
+
+# Optional — restrict to specific regions
+# allowed_locations = ["eastus", "eastus2"]
