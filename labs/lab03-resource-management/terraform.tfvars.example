@@ -1,0 +1,6 @@
+# Required — identify yourself
+lab_owner = "yourname@example.com"
+
+# Optional overrides
+# location    = "eastus"
+# environment = "dev"

@@ -1,0 +1,8 @@
+# Required
+lab_owner              = "yourname@example.com"
+allowed_ssh_cidr       = "YOUR.PUBLIC.IP/32"
+ssh_public_key         = "ssh-rsa AAAA..."
+windows_admin_password = "ChangeMe!SecureP@ss123"
+
+# Optional
+# vm_size = "Standard_B2s"

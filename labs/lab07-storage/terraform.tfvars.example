@@ -1,0 +1,6 @@
+# Required
+lab_owner = "yourname@example.com"
+
+# Optional — lock down network access
+# storage_network_default_action = "Deny"
+# allowed_storage_ips            = ["YOUR.PUBLIC.IP"]

@@ -1,0 +1,7 @@
+# Required
+lab_owner = "yourname@example.com"
+
+# Required — Object IDs from Entra ID (get these from Lab 01 outputs or Azure portal)
+contributor_principal_id = "00000000-0000-0000-0000-000000000000"
+reader_principal_id     = "00000000-0000-0000-0000-000000000000"
+support_principal_id    = "00000000-0000-0000-0000-000000000000"
